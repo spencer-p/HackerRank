@@ -30,8 +30,8 @@ return function(array, reverse)
 		}
 	end
 
-	-- Sort our new list
-	table.sort(positions, function(a, b) return a.value > b.value end)
+	-- Sort our new list, with the comparator from above
+	table.sort(positions, comparator)
 
 	local swaps = 0
 
