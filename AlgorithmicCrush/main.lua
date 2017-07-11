@@ -29,7 +29,11 @@ for i = 1, m do
 	table.insert(positions, { position = b+1, change = -k })
 end
 
-table.sort(positions, function(a, b) return a.position < b.position end)
+table.sort(positions, function(a, b)
+	-- For equal positions, ends of ranges MUST come first
+	if a.position == b.position then return a.change < b.change end
+	return a.position < b.position 
+end)
 
 -- Loop through and count the sum, save the max
 max, sum = 0, 0
