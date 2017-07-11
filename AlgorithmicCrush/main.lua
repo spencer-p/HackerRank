@@ -13,7 +13,7 @@
 -- 1
 -- a b k
 --
--- The corresponding array would be { { a, k }, { b, -k } }
+-- The corresponding array would be { { a, k }, { b+1, -k } }
 --
 
 -- Read input
@@ -26,20 +26,7 @@ positions = {}
 for i = 1, m do
 	local a, b, k = io.read("*number", "*number", "*number", "*l")
 	table.insert(positions, { position = a, change = k })
-	table.insert(positions, { position = b, change = -k })
-end
-
--- Now sort the positions
--- First a comparator
-function compare(a, b)
-	if a.position == b.position then
-		-- If positions are equal, we want to do all of the addition first
-		-- to get the max value, so we break the tie with change
-		return a.change > b.change
-	else
-		-- Normal case, sort lowest pos first
-		return a.position < b.position
-	end
+	table.insert(positions, { position = b+1, change = -k })
 end
 
 table.sort(positions, function(a, b) return a.position < b.position end)
