@@ -11,11 +11,19 @@ function strsum(str, a, b)
 	for i = a, b do
 		sum = sum + tonumber(str:sub(i,i))
 	end
+	return sum
 end
 
 function islucky(str)
 	if type(str) == "number" then
 		str = tostring(str)
 	end
-	return strsum(str, 1, 3) == strsum(str, 1, 3)
+	return strsum(str, 1, 3) == strsum(str, 4, 6)
+end
+
+function getnextlucky(n)
+	repeat
+		n = n + 1
+	until islucky(n)
+	return n
 end
