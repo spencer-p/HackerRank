@@ -27,3 +27,6 @@ function getnextlucky(n)
 	until islucky(n)
 	return n
 end
+
+local x = io.read("*n", "*l")
+print(getnextlucky(x))
